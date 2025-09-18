@@ -18,6 +18,13 @@ def checkmate(board_str):
         n = len(board)
         m = len(board[0])
 
+        # เช็คตัวอื่นที่ไม่ใช้
+        allowed = {'K', 'P', 'B', 'R', 'Q', '.'}
+        for i in range(n):
+            for j in range(m):
+                if board[i][j] not in allowed:
+                    raise ValueError(f"Invalid character '{board[i][j]}' at ({i},{j})")
+
         king_pos = None
         for i in range(n):
             for j in range(m):
